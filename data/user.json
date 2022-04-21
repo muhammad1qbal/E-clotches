@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Budi",
+    "email": "Budi123@gmail.com",
+    "password": "budi ganteng",
+    "role": "seller"
+  },
+  {
+    "name": "Toni",
+    "email": "Toni456@yahoo.com",
+    "password": "toni disini",
+    "role": "buyer"
+  },
+  {
+    "name": "Ani",
+    "email": "Ani.Hartanti@gmail.com",
+    "password": "anicantik123",
+    "role": "buyer"
+  },
+  {
+    "name": "Andi",
+    "email": "Andi789@yahoo.com",
+    "password": "andipinterbanget",
+    "role": "seller"
+  },
+  {
+    "name": "Doni",
+    "email": "Doni901@gmail.com",
+    "password": "Donijago123",
+    "role": "buyer"
+  }
+]

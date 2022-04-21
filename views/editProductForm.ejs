@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product</title>
+  </head>
+  <body>
+    <h2>Edit Product</h2>
+
+    <form
+      action="/sellers/<%= result.UserId %>/products/<%= result.id %>/edit"
+      method="post"
+    >
+      <label for="name">Product Name</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="<%= result.name %> "
+      /><br /><br />
+
+      <label for="imageURL">Product Image URL</label><br />
+      <input
+        type="text"
+        id="imageURL"
+        name="imageURL"
+        value="<%= result.imageURL %> "
+      /><br /><br />
+
+      <label for="description">Product Description</label><br />
+      <textarea name="description" maxlength="500">
+<%= result.description %> </textarea
+      ><br /><br />
+
+      <label for="price">Product Price</label><br />
+      <input
+        type="text"
+        id="price"
+        name="price"
+        value="<%= +result.price  %> "
+      /><br /><br />
+
+      <select name="CategoryId">
+        <% category.forEach(element => { %> <% if(element.id ==
+        result.CategoryId) { %>
+        <option value="<%= element.id %>" selected><%= element.name %></option>
+        <% } else { %>
+        <option value="<%= element.id %>"><%= element.name %></option>
+        <% } %> <% }) %>
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

@@ -6,7 +6,7 @@
     "price": 65000,
     "isBuy": false,
     "CategoryId": 4,
-    "UserId": 3
+    "UserId": 4
   },
   {
     "name": "Jaket bomber casual Pria Terbaru simpel Cream",
@@ -24,7 +24,7 @@
     "price": 270000,
     "isBuy": false,
     "CategoryId": 3,
-    "UserId": 2
+    "UserId": 1
   },
   {
     "name": "Unishirt",

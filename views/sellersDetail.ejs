@@ -7,9 +7,10 @@
     <title>Seller Detail</title>
   </head>
   <body>
+    <h3><a href="/logout">Logout</a></h3>
     <h2>Seller Profile with Product</h2>
     <% result.forEach(element => { %>
-    <a href="/sellers/<%= element.id %>/add "><button>Add Product</button></a>
+    <a href="/sellers/<%= element.id %>/add "><button>Add Product</button></a><br><br>
     <table border="1">
       <thead>
         <tr>
@@ -27,7 +28,7 @@
           <td><%= element.Profile.phone %></td>
         </tr>
       </tbody>
-    </table>
+    </table><br><br>
     <table border="1">
       <thead>
         <tr>

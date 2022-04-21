@@ -34,7 +34,7 @@
           <td><img src="<%=el.imageURL%>" alt="Girl in a jacket" style="width:100px;height:120px;"></td>
           <td><%=el.name%></td>
           <td style="width:500px;"><%=el.description%></td>
-          <td><%=el.price%></td>
+          <td><%=price(el.price)%></td>
           <td><%=el.Category.name%></td>
           <td><a href="/buyers/<%=data.id%>/products/<%=el.id%>/delete"><button>Delete</button></a></td>
         </tr>
@@ -57,7 +57,7 @@
           <td><img src="<%=el.imageURL%>" alt="Girl in a jacket" style="width:100px;height:120px;"></td>
           <td><%=el.name%></td>
           <td style="width:500px;"><%=el.description%></td>
-          <td><%=el.price%></td>
+          <td><%=price(el.price)%></td>
           <td><%=el.Category.name%></td>
           <%if(confirm == el.id) {%>
             <td>Check your e-mail</td>

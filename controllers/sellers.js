@@ -4,7 +4,7 @@ const {
   User,
   Profile
 } = require('../models/index');
-const rupiah = require('../helper/price');
+const rupiah = require('../helpers/price');
 
 class SellerController {
   static listSellerById(request, response) {
@@ -27,19 +27,16 @@ class SellerController {
         role: 'seller'
       }
     }).then((result) => {
-      // console.log(result);
       response.render('sellersDetail', {
         result,
         rupiah
       })
     }).catch((err) => {
-      // console.log(err);
       response.send(err);
     })
   }
 
   static addProductForm(request, response) {
-    // console.log(request.params);
     const {
       id
     } = request.params;
@@ -54,8 +51,6 @@ class SellerController {
   }
 
   static addProduct(request, response) {
-    // console.log(request.body);
-    // console.log(request.params);
     const {
       name,
       imageURL,
@@ -83,20 +78,17 @@ class SellerController {
   }
 
   static editForm(request, response) {
-    // console.log(request.params);
     const {
       id,
       productId
     } = request.params;
     let data = {};
     Product.findByPk(productId).then((result) => {
-      // console.log(result);
       data.result = result;
+      data.coba = '555'
       return Category.findAll();
     }).then((data2) => {
       data.category = data2;
-      // console.log(data.category[0].id);
-      // console.log(data.result.CategoryId);
       response.render('editProductForm', data)
     }).catch((err) => {
       response.send(err);
@@ -104,9 +96,6 @@ class SellerController {
   }
 
   static editProduct(request, response) {
-    console.log(request.body);
-    console.log(request.params);
-
     const {
       name,
       imageURL,

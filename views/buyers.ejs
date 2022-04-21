@@ -7,6 +7,7 @@
   <title>Document</title>
 </head>
 <body>
+  <h3><a href="/logout">Logout</a></h3>
   <h1>Hello <%=data.name%></h1>
   <h2>Your Profile</h2>
   <p>age: <%=data.Profile.age%></p>
@@ -42,6 +43,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
+        <th>Action</th>
       </tr>
       <%notBuy.forEach(el => {%>
         <tr>
@@ -49,7 +51,11 @@
           <td><%=el.name%></td>
           <td style="width:500px;"><%=el.description%></td>
           <td><%=el.price%></td>
-          <td><a><button>Buy</button></a></td>
+          <%if(confirm == el.id) {%>
+            <td>Check your e-mail</td>
+          <%} else {%>
+            <td><a href="/buyers/<%=data.id%>/products/<%=el.id%>/buy"><button>Buy</button></a></td>
+          <%}%>
         </tr>
       <%})%>
     </table>

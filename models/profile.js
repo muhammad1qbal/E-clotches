@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     hooks: {
       beforeCreate: (ins, opt) => {
-        ins.userCode = ins.age + ins.phone
+        ins.userCode = `${ins.gender[0]}-${ins.phone.slice(0,5)}`
       }
     },
     modelName: 'Profile',

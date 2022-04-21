@@ -6,6 +6,6 @@
     "price": 50000,
     "CategoryId": 1,
     "UserId": 1,
-    "isBuy": false
+    "isBuy": true
   }
 ]

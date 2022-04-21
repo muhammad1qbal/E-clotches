@@ -1,26 +1,44 @@
-const {User, Profile, Products} = require('../models/index')
+const {User, Profile, Product} = require('../models/index')
 
 class BuyerController {
   static buyers(req,res) {
-    console.log(req.params);
+    const {id} = req.params
+    let obj = {}
     User.findOne({
-      include: [Profile, Products]
+      include:[Profile, Product],
+      where: {
+        id
+      }
     })
     .then((data) => {
-      console.log(data);
-      res.render('buyers')
+      obj.data = data
+      return Product.findAll({
+        where: {
+          isBuy: false
+        }
+      })
+    })
+    .then((data2) => {
+      obj.notBuy = data2
+      res.render('buyers', obj)
     })
     .catch((err) => {
-      console.log(err);
+      res.send(err)
     })
   }
 
   static buy(req,res) {
-    
+    console.log(req.params);
   }
 
   static delete(req,res) {
-    
+    console.log(req.params);
+    const {id, productId} = req.params
+    Product.destroy({
+      where: {
+        id: productId
+      }
+    })
   }
 
 }

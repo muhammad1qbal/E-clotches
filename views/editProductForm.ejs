@@ -35,12 +35,7 @@
       ><br /><br />
 
       <label for="price">Product Price</label><br />
-      <input
-        type="text"
-        id="price"
-        name="price"
-        value="<%= +result.price  %> "
-      /><br /><br />
+      <input type="number" id="fname" name="price" value="<%=+result.price%>"><br><br>
 
       <select name="CategoryId">
         <% category.forEach(element => { %> <% if(element.id ==
@@ -49,7 +44,7 @@
         <% } else { %>
         <option value="<%= element.id %>"><%= element.name %></option>
         <% } %> <% }) %>
-      </select>
+      </select><br /><br />
       <input type="submit" value="Submit" />
     </form>
   </body>

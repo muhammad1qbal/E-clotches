@@ -28,5 +28,11 @@
     "email": "Doni901@gmail.com",
     "password": "Donijago123",
     "role": "buyer"
+  },
+  {
+    "name": "Iqbal",
+    "email": "iqbalgen021@gmail.com",
+    "password": "123",
+    "role": "buyer"
   }
 ]

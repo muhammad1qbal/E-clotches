@@ -1,13 +1,39 @@
+const { compare } = require('../helpers/security')
 const {User, Profile} = require('../models/index')
 
 class IndexController {
 
   static homeGet (req, res) {
-    res.render('home')
+    const {errors} = req.query
+    res.render('home', {errors})
   }
 
   static homePost (req, res) {
-    // res.render()
+    const {email, password} = req.body
+
+    User.findOne({
+      where: {
+        email,
+      }
+    })
+    .then((data) => {
+      if (data) {
+        if (data.role == 'seller' && compare(password, data.password)) {
+          req.session.login = true
+          res.redirect(`/sellers/${data.id}`)
+        } else if (data.role == 'buyer' && compare(password, data.password)) {
+          req.session.login = true
+          res.redirect(`/buyers/${data.id}`)
+        } else {
+          res.redirect('/?errors=email or password invalid')
+        }
+      } else {
+        res.redirect('/?errors=email or password invalid')
+      }
+    })
+    .catch((err) => {
+      res.send(err)
+    })
   }
 
   static registerGet(req, res) {
@@ -30,7 +56,6 @@ class IndexController {
       res.redirect(`/register/${data.id}/profile`)
     })
     .catch((err) => {
-      console.log(err);
       let errors = err.errors.map(el => el.message)
       res.redirect(`/register?errors=${errors}`)
     })
@@ -61,6 +86,12 @@ class IndexController {
     .catch((err) => {
       let errors = err.errors.map(el => el.message)
       res.redirect(`/register/${id}/profile?errors=${errors}`)
+    })
+  }
+
+  static logout(req, res) {
+    req.session.destroy(err => {
+      res.redirect('/')
     })
   }
 }

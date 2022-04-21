@@ -1,5 +1,6 @@
 'use strict';
 
+const { hash } = require('../helpers/security');
 const fs = require('fs');
 
 module.exports = {
@@ -18,6 +19,7 @@ module.exports = {
     dataUsers.forEach(element => {
       element.createdAt = new Date();
       element.updatedAt = new Date();
+      element.password = hash(element.password)
     });
 
     return queryInterface.bulkInsert('Users', dataUsers, {})

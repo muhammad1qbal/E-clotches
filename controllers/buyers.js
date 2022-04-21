@@ -1,11 +1,11 @@
-const {User, Profile, Product} = require('../models/index')
-
+const { Op } = require('sequelize')
+const {User, Profile, Product, Category} = require('../models/index')
 
 class BuyerController {
   static buyers(req,res) {
     const {id,} = req.params
     let obj = {confirm: req.query.buy}
-
+    const {search} = req.query
     User.findOne({
       include:[Profile, Product],
       where: {
@@ -15,13 +15,29 @@ class BuyerController {
     .then((data) => {
       obj.data = data
       return Product.findAll({
+        include: [Category],
         where: {
-          isBuy: false
+          UserId: data.id,
+          name: {
+            [Op.iLike]: `%${search}%`
+          }
         }
       })
     })
     .then((data2) => {
-      obj.notBuy = data2
+      obj.buyProduct = data2
+      return Product.findAll({
+        include: [Category],
+        where: {
+          isBuy: false,
+          name: {
+            [Op.iLike]: `%${search}%`
+          }
+        }
+      })
+    })
+    .then((data3) => {
+      obj.notBuy = data3
       res.render('buyers', obj)
     })
     .catch((err) => {

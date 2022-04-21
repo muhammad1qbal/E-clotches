@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       User.belongsTo(models.Profile, {
-        foreignKey: "ProfileId"
+        foreignKey: "UserId"
       })
     }
   }
@@ -55,8 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'role is required'
         }
       }
-    },
-    ProfileId: DataTypes.INTEGER
+    }
   }, {
     sequelize,
     modelName: 'User',

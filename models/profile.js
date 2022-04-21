@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Profile.hasOne(models.User, {
-        foreignKey: "ProfileId"
+        foreignKey: "UserId"
       })
     }
   }
   Profile.init({
-    age:{
+    age: {
       type: DataTypes.INTEGER,
       validate: {
         notEmpty: {
@@ -50,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     userCode: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     hooks: {

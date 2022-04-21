@@ -30,6 +30,7 @@ class IndexController {
       res.redirect(`/register/${data.id}/profile`)
     })
     .catch((err) => {
+      console.log(err);
       let errors = err.errors.map(el => el.message)
       res.redirect(`/register?errors=${errors}`)
     })

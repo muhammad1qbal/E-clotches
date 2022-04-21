@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Register</h1>
+  <form action="/register" method="post">
+    <label for="fname">Name</label><br>
+    <input type="text" id="fname" name="name"><br><br>
+    <label for="lname">Email</label><br>
+    <input type="text" id="lname" name="email"><br><br>
+    <label for="lname">Password</label><br>
+    <input type="text" id="lname" name="password"><br><br>
+    <label for="cars">Role</label><br>
+    <select id="cars" name="role">
+      <option value="" hidden>--Choose an option--</option>
+      <option value="seller">Seller</option>
+      <option value="buyer">Buyer</option>
+    </select><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <%if (errors) {%>
+    <%errors.forEach(el => {%>
+      <p style="color: red;"><%=el%></p>
+    <%})%>
+  <%}%>
+</body>
+</html>

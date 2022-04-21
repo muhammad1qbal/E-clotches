@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Register</h1>
+  <h2>Profile</h2>
+  <form action="/register/<%=id%>/profile" method="post">
+    <label for="fname">age</label><br>
+    <input type="number" id="fname" name="age"><br><br>
+    <label for="lname">gender</label><br>
+    <select id="cars" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+    <label for="lname">phone</label><br>
+    <input type="text" id="lname" name="phone"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <%if (errors) {%>
+    <%errors.forEach(el => {%>
+      <p style="color: red;"><%=el%></p>
+    <%})%>
+  <%}%>
+</body>
+</html>

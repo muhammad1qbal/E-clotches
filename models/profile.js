@@ -17,12 +17,46 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profile.init({
-    age: DataTypes.INTEGER,
-    gender: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    userCode: DataTypes.STRING
+    age:{
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'age is required'
+        },
+        min: {
+          args: 10,
+          msg: 'min age is 10'
+        }
+      }
+    },
+    gender: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'gender is required'
+        }
+      }
+    },
+    phone: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'phone is required'
+        },
+        len: {
+          args: [5, 15],
+          msg: 'phone number minimum 5 digit and maximum 15 digit'
+        }
+      }
+    },
+    userCode: DataTypes.STRING,
   }, {
     sequelize,
+    hooks: {
+      beforeCreate: (ins, opt) => {
+        ins.userCode = ins.age + ins.phone
+      }
+    },
     modelName: 'Profile',
   });
   return Profile;

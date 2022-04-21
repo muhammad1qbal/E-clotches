@@ -19,6 +19,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "UserId"
       })
     }
+
+    status() {
+      if (this.price >= 150000) {
+        return `Expensive`
+      } else if (this.price > 50000 && this.price < 150000) {
+        return `Standard`
+      } else {
+        return `Cheap`
+      }
+    }
   }
   Product.init({
     name: DataTypes.STRING,
@@ -31,6 +41,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Product',
+    hooks: {
+      beforeCreate: (instance, options) => {
+        instance.isBuy = false;
+      }
+    }
   });
   return Product;
 };

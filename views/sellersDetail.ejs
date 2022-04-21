@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller Detail</title>
+  </head>
+  <body>
+    <h2>Seller Profile with Product</h2>
+    <% result.forEach(element => { %>
+    <a href="/sellers/<%= element.id %>/add "><button>Add Product</button></a>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= element.name %></td>
+          <td><%= element.Profile.age %></td>
+          <td><%= element.Profile.gender %></td>
+          <td><%= element.Profile.phone %></td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Image</th>
+          <th>Product Description</th>
+          <th>Product Price</th>
+          <th>Product Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% element.Products.forEach(el => { %>
+        <tr>
+          <td><%= el.name %></td>
+          <td><img src="<%= el.imageURL  %>" alt="" style="width: 100px" /></td>
+          <td><%= el.description %></td>
+          <td><%= rupiah(el.price) %></td>
+          <td><%= el.status() %></td>
+          <td>
+            <a href="/sellers/<%= element.id %>/products/<%= el.id %>/edit "
+              ><button>Edit</button></a
+            >
+          </td>
+          <% }) %>
+        </tr>
+      </tbody>
+    </table>
+    <% }) %>
+  </body>
+</html>

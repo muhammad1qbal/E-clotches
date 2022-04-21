@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "UserId"
       })
 
-      User.belongsTo(models.Profile, {
+      User.hasOne(models.Profile, {
         foreignKey: "UserId"
       })
     }
